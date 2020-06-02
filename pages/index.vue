@@ -5,33 +5,24 @@
         .fold.fold-top
           .fold-align
             .fold-content
-              div(v-for='n in 12', :key='n')
-                span.type.type--1 Corbel&nbsp;
+              div(v-for='n in 20', :key='n')
+                span.type.type--1 Creative&nbsp;
                 span.type.type--2 Gabriel Corbel&nbsp;
-                span.type.type--1 Gabriel Corbel&nbsp;
-                //- span.type.type--2 Gabriel Corbel
-                //- span.type.type--1 Gabriel Corbel
-                //- span.type.type--2 Gabriel Corbel
+                span.type.type--1 Developer&nbsp;
         .fold.fold-center(id='center-fold', ref='title')
           .fold-align
             .fold-content(id='center-content')
-              div(v-for='n in 12', :key='n')
-                span.type.type--1 Corbel&nbsp;
+              div(v-for='n in 20', :key='n')
+                span.type.type--1 Creative&nbsp;
                 span.type.type--2 Gabriel Corbel&nbsp;
-                span.type.type--1 Gabriel Corbel&nbsp;
-                //- span.type.type--2 Gabriel Corbel
-                //- span.type.type--1 Gabriel Corbel
-                //- span.type.type--2 Gabriel Corbel
+                span.type.type--1 Developer&nbsp;
         .fold.fold-bottom
           .fold-align
             .fold-content
-              div(v-for='n in 12', :key='n')
-                span.type.type--1 Corbel&nbsp;
+              div(v-for='n in 20', :key='n')
+                span.type.type--1 Creative&nbsp;
                 span.type.type--2 Gabriel Corbel&nbsp;
-                span.type.type--1 Gabriel Corbel&nbsp;
-                //- span.type.type--2 Gabriel Corbel
-                //- span.type.type--1 Gabriel Corbel
-                //- span.type.type--2 Gabriel Corbel
+                span.type.type--1 Developer&nbsp;
 </template>
 
 <script>
@@ -138,7 +129,7 @@ export default {
     height 100%
 
 .type
-    font-size 9vw
+    font-size 7.5vw
     line-height 0.9
     white-space nowrap
     text-transform uppercase
