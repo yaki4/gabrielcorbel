@@ -5,24 +5,39 @@
         .fold.fold-top
           .fold-align
             .fold-content
-              div(v-for='n in 20', :key='n')
-                span.type.type--1 Creative&nbsp;
-                span.type.type--2 Gabriel Corbel&nbsp;
-                span.type.type--1 Developer&nbsp;
+              div(v-for='n in numberElem', :key='n')
+                template(v-if='n % 2')
+                  span.type.type--1 Interactive&nbsp;
+                  span.type.type--2 Gabriel Corbel&nbsp;
+                  span.type.type--1 Developer&nbsp;
+                template(v-else)
+                  span.type.type--1 Developpeur&nbsp;
+                  span.type.type--2 Gabriel Corbel&nbsp;
+                  span.type.type--1 Interactif&nbsp;
         .fold.fold-center(id='center-fold', ref='title')
           .fold-align
             .fold-content(id='center-content')
-              div(v-for='n in 20', :key='n')
-                span.type.type--1 Creative&nbsp;
-                span.type.type--2 Gabriel Corbel&nbsp;
-                span.type.type--1 Developer&nbsp;
+              div(v-for='n in numberElem', :key='n')
+                template(v-if='n % 2')
+                  span.type.type--1 Interactive&nbsp;
+                  span.type.type--2 Gabriel Corbel&nbsp;
+                  span.type.type--1 Developer&nbsp;
+                template(v-else)
+                  span.type.type--1 Developpeur&nbsp;
+                  span.type.type--2 Gabriel Corbel&nbsp;
+                  span.type.type--1 Interactif&nbsp;
         .fold.fold-bottom
           .fold-align
             .fold-content
-              div(v-for='n in 20', :key='n')
-                span.type.type--1 Creative&nbsp;
-                span.type.type--2 Gabriel Corbel&nbsp;
-                span.type.type--1 Developer&nbsp;
+              div(v-for='n in numberElem', :key='n')
+                template(v-if='n % 2')
+                  span.type.type--1 Interactive&nbsp;
+                  span.type.type--2 Gabriel Corbel&nbsp;
+                  span.type.type--1 Developer&nbsp;
+                template(v-else)
+                  span.type.type--1 Developpeur&nbsp;
+                  span.type.type--2 Gabriel Corbel&nbsp;
+                  span.type.type--1 Interactif&nbsp;
 </template>
 
 <script>
@@ -32,8 +47,17 @@ import App from '~/assets/js/App'
 export default {
   components: {
   },
+  computed: {
+    numberElem () {
+      if (this.$store.state.device.isMobile) {
+        return 30
+      } else {
+        return 20
+      }
+    }
+  },
   mounted () {
-    this.test()
+    this.setScroll()
     const tl = new TimelineLite({
       onComplete: () => {
         this.$store.dispatch('loading/setLoaded', true)
@@ -48,7 +72,7 @@ export default {
     }, 1000)
   },
   methods: {
-    test () {
+    setScroll () {
       const centerContent = document.getElementById('center-content')
       const centerFold = document.getElementById('center-fold')
 
@@ -56,7 +80,7 @@ export default {
 
       window.document.getElementById('loader').style.height = overflowHeight + window.innerHeight + 'px'
 
-      // on créé le scroll
+      // on cree le scroll
       const foldsContent = Array.from(document.getElementsByClassName('fold-content'))
       const tick = () => {
         const scroll = -(
@@ -129,7 +153,7 @@ export default {
     height 100%
 
 .type
-    font-size 7.5vw
+    font-size 7vw
     line-height 0.9
     white-space nowrap
     text-transform uppercase

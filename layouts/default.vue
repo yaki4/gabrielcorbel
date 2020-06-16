@@ -1,10 +1,8 @@
-<template>
-  <div class="app">
-    <div :class="$store.state.loading.isLoaded ? 'is-loaded' : 'is-loading'" class="app__wrapper">
-      <nuxt />
-      <div class="canvas-webgl" />
-    </div>
-  </div>
+<template lang="pug">
+  .app
+    .app__wrapper(:class="$store.state.loading.isLoaded ? 'is-loaded' : 'is-loading'")
+      nuxt
+      .canvas-webgl
 </template>
 <script>
 import throttle from 'lodash.throttle'

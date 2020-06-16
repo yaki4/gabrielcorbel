@@ -1,23 +1,23 @@
 import path from 'path'
-
+import webpack from 'webpack'
 export default {
   mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    title: "Gabriel Corbel | Faiseur d' intéractivité | Creative developper",
+    title: "Gabriel Corbel | Faiseur d' intéractivité | Interactive developper",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: "Gabriel Corbel | Faiseur d' intéractivité | Creative developper" },
+      { hid: 'description', name: 'description', content: "Gabriel Corbel | Faiseur d' intéractivité | Interactive developper" },
       { name: 'theme-color', content: '#1A1A1A' },
       { name: 'msapplication-TileColor', content: '#1A1A1A' },
       { name: 'mobile-web-app-capable', content: 'yes' },
       {
         hid: `og:title`,
         property: 'og:title',
-        content: "Gabriel Corbel | Faiseur d' intéractivité | Creative developper"
+        content: "Gabriel Corbel | Faiseur d' intéractivité | Interactive developper"
       },
       {
         hid: 'og:type',
@@ -27,12 +27,12 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: 'Hello, Hi 👋'
+        content: 'Bonjour, Hi 👋'
       },
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: "Gabriel Corbel | Faiseur d' intéractivité | Creative developper"
+        content: "Gabriel Corbel | Faiseur d' intéractivité | Interactive developper"
       },
       {
         hid: 'og:url',
@@ -62,12 +62,12 @@ export default {
       {
         hid: 'twitter:title',
         property: 'twitter:title',
-        content: "Gabriel Corbel | Faiseur d' intéractivité | Creative developper"
+        content: "Gabriel Corbel | Faiseur d' intéractivité | Interactive developper"
       },
       {
         hid: 'twitter:description',
         property: 'twitter:description',
-        content: "Gabriel Corbel | Faiseur d' intéractivité | Creative developper"
+        content: "Gabriel Corbel | Faiseur d' intéractivité | Interactive developper"
       },
       {
         hid: 'twitter:site',
@@ -205,12 +205,30 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    // plugins: [
+    //   new webpack.ProvidePlugin({
+    //     THREE: 'three'
+    //   })
+    // ],
     extend (config, ctx) {
       config.resolve.alias.vue = 'vue/dist/vue.common'
 
       config.module.rules.push({
         test: /\.(glsl|vs|fs)$/,
         loader: 'raw-loader'
+      }, {
+        test: /\.fnt$/,
+        use: [
+          'file-loader',
+          'extract-loader',
+          {
+            loader: 'html-loader',
+            options: {
+              // by adding this it will extract each "page” file from the xml as well
+              // attrs: ['page:file']
+            }
+          }
+        ]
       })
 
       const stylusRules = config.module.rules.find(
