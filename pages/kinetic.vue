@@ -11,6 +11,7 @@ export default {
     this.ready = require('domready')
     this.ready(() => {
       const kinetic = new Kinetic()
+      console.log(kinetic)
       kinetic.init()
     })
   }

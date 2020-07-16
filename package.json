@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@brunoimbrizi/controlkit": "^0.1.97",
+    "bmfont-loader": "^0.2.0",
     "browser-detect": "^0.2.28",
     "cross-env": "^5.2.0",
     "domready": "^1.0.8",
@@ -31,7 +32,7 @@
     "nuxt": "^2.0.0",
     "nuxt-font-loader-strategy": "^1.1.0",
     "three": "^0.116.1",
-    "three-bmfont-text": "^2.3.0",
+    "three-bmfont-text": "assets/library/three-bmfont-text",
     "three-orbit-controls": "^82.1.0",
     "url-loader": "^4.1.0"
   },

@@ -6,51 +6,37 @@
           .fold-align
             .fold-content
               div(v-for='n in numberElem', :key='n')
-                template(v-if='n % 2')
-                  span.type.type--1 Interactive&nbsp;
-                  span.type.type--2 Gabriel Corbel&nbsp;
-                  span.type.type--1 Developer&nbsp;
-                template(v-else)
-                  span.type.type--1 Developpeur&nbsp;
-                  span.type.type--2 Gabriel Corbel&nbsp;
+                  span.type.type--1 &nbsp;Interactive&nbsp;
+                  span.type.type--2 Developer / Developpeur &nbsp;
                   span.type.type--1 Interactif&nbsp;
         .fold.fold-center(id='center-fold', ref='title')
           .fold-align
             .fold-content(id='center-content')
               div(v-for='n in numberElem', :key='n')
-                template(v-if='n % 2')
-                  span.type.type--1 Interactive&nbsp;
-                  span.type.type--2 Gabriel Corbel&nbsp;
-                  span.type.type--1 Developer&nbsp;
-                template(v-else)
-                  span.type.type--1 Developpeur&nbsp;
-                  span.type.type--2 Gabriel Corbel&nbsp;
-                  span.type.type--1 Interactif&nbsp;
+                span.type.type--1 &nbsp;Interactive&nbsp;
+                span.type.type--2 Developer / Developpeur &nbsp;
+                span.type.type--1 Interactif&nbsp;
         .fold.fold-bottom
           .fold-align
             .fold-content
               div(v-for='n in numberElem', :key='n')
-                template(v-if='n % 2')
-                  span.type.type--1 Interactive&nbsp;
-                  span.type.type--2 Gabriel Corbel&nbsp;
-                  span.type.type--1 Developer&nbsp;
-                template(v-else)
-                  span.type.type--1 Developpeur&nbsp;
-                  span.type.type--2 Gabriel Corbel&nbsp;
-                  span.type.type--1 Interactif&nbsp;
+                span.type.type--1 &nbsp;Interactive&nbsp;
+                span.type.type--2 Developer / Developpeur &nbsp;
+                span.type.type--1 Interactif&nbsp;
 </template>
 
 <script>
 import { TimelineLite, Expo } from 'gsap'
 /* eslint-disable-next-line */
-import App from '~/assets/js/App'
+// import App from '~/assets/js/App'
+import Kinetic from '~/assets/js/kinetic'
 export default {
   components: {
   },
   computed: {
     numberElem () {
       if (this.$store.state.device.isMobile) {
-        return 30
+        return 50
       } else {
         return 20
       }
@@ -63,7 +49,12 @@ export default {
         this.$store.dispatch('loading/setLoaded', true)
       }
     })
-
+    this.ready = require('domready')
+    this.ready(() => {
+      const kinetic = new Kinetic()
+      // console.log(kinetic)
+      kinetic.init()
+    })
     setTimeout(() => {
       tl.to(this.$refs.title, 1, {
         autoAlpha: 1,
@@ -153,7 +144,7 @@ export default {
     height 100%
 
 .type
-    font-size 7vw
+    font-size 5.5vw
     line-height 0.9
     white-space nowrap
     text-transform uppercase

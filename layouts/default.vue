@@ -1,10 +1,12 @@
 <template lang="pug">
   .app
     .app__wrapper(:class="$store.state.loading.isLoaded ? 'is-loaded' : 'is-loading'")
+      .test(id='label0')
       nuxt
-      .canvas-webgl
+      .canvas-webgl(ref='canvasweb')
 </template>
 <script>
+import { TimelineLite, Expo } from 'gsap'
 import throttle from 'lodash.throttle'
 import Emitter from '~/assets/js/utils/events'
 export default {
@@ -17,6 +19,14 @@ export default {
     this.removeListeners()
   },
   methods: {
+    changePlace () {
+      // ['onResize'].forEach(fn => (this[fn] = this[fn].bind(this)))
+      const tl = new TimelineLite()
+      tl.to(this.$refs.canvasweb, 1, {
+        autoAlpha: 0,
+        ease: Expo.easeOut
+      })
+    },
     bindAll () {
       ['onResize'].forEach(fn => (this[fn] = this[fn].bind(this)))
     },

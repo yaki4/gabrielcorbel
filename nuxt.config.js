@@ -216,7 +216,7 @@ export default {
       config.module.rules.push({
         test: /\.(glsl|vs|fs)$/,
         loader: 'raw-loader'
-      }, {
+      }, {  
         test: /\.fnt$/,
         use: [
           'file-loader',
@@ -229,8 +229,13 @@ export default {
             }
           }
         ]
-      })
-
+      }) 
+      /* old way
+        {
+          test: /\.fnt$/,
+          use: ["bmfont-loader"],
+        })
+      */
       const stylusRules = config.module.rules.find(
         rule => rule.test.toString().includes('styl')
       )
