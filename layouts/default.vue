@@ -1,7 +1,6 @@
 <template lang="pug">
   .app
     .app__wrapper(:class="$store.state.loading.isLoaded ? 'is-loaded' : 'is-loading'")
-      .test(id='label0')
       nuxt
       .canvas-webgl(ref='canvasweb')
 </template>

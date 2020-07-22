@@ -13,6 +13,7 @@ const fontFile = require('~/assets/fonts/Orbitron-Black.fnt')
 const fontAtlas = require('~/assets/fonts/Orbitron-Black.png')
 export default class Kinetic {
   constructor () {
+    this.tl = new TimelineLite()
     this.renderer = new THREE.WebGLRenderer({
       alpha: true
     })
@@ -152,12 +153,18 @@ export default class Kinetic {
 
     if (intersects.length > 0) {
       event.preventDefault()
-      console.log('click')
-      const tl = new TimelineLite()
+      window.$nuxt.context.store.commit('setLogoClick', !window.$nuxt.context.store.state.logoClick)
       const elem = document.querySelector('.canvas-webgl')
-      tl.to(elem, 1, {
-        top: -100
-      })
+      if (!window.$nuxt.context.store.state.logoClick) {
+        const elem = document.querySelector('.canvas-webgl')
+        this.tl.reverse()
+      } else {
+        const elem = document.querySelector('.canvas-webgl')
+        this.tl.to(elem, 1, {
+          top: -75
+        })
+        this.tl.play()
+      }
     }
   }
 

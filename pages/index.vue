@@ -5,7 +5,7 @@
         .fold.fold-top
           .fold-align
             .fold-content
-              div(v-for='n in numberElem', :key='n')
+              div(v-for='n in numberElem + 10', :key='n')
                   span.type.type--1 &nbsp;Interactive&nbsp;
                   span.type.type--2 Developer / Developpeur &nbsp;
                   span.type.type--1 Interactif&nbsp;
@@ -23,6 +23,8 @@
                 span.type.type--1 &nbsp;Interactive&nbsp;
                 span.type.type--2 Developer / Developpeur &nbsp;
                 span.type.type--1 Interactif&nbsp;
+    //- .test(v-if='$store.state.logoClick')
+      h2 coucou
 </template>
 
 <script>
@@ -38,12 +40,12 @@ export default {
       if (this.$store.state.device.isMobile) {
         return 50
       } else {
-        return 20
+        return 30
       }
     }
   },
   mounted () {
-    this.setScroll()
+    this.setScroll(true)
     const tl = new TimelineLite({
       onComplete: () => {
         this.$store.dispatch('loading/setLoaded', true)
@@ -63,7 +65,7 @@ export default {
     }, 1000)
   },
   methods: {
-    setScroll () {
+    setScroll (first) {
       const centerContent = document.getElementById('center-content')
       const centerFold = document.getElementById('center-fold')
 
@@ -82,6 +84,9 @@ export default {
         })
         requestAnimationFrame(tick)
       }
+      if (first) {
+        document.documentElement.scrollTop = 100
+      }
       tick()
     }
   }
@@ -89,6 +94,15 @@ export default {
 </script>
 
 <style lang="stylus">
+body::-webkit-scrollbar
+  width 0em
+
+body::-webkit-scrollbar-track 
+  box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
+
+body::-webkit-scrollbar-thumb 
+  background-color transparent
+  outline 1px solid transparent
 .loader
     font-family sans-serif
     width 100%
@@ -106,7 +120,7 @@ export default {
     justify-content center
     width 100%
     height 100vh
-
+    transition translate(20px, 20px) 2s linear
 .wrapper-3d
     position relative
     perspective 20vw
