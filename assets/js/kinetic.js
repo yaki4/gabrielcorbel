@@ -1,8 +1,9 @@
-import * as THREE from 'three'
+// import * as THREE from 'three'
 // import fontFile from '@/assets/fonts/Orbitron-Black.fnt'
 // global.THREE = THREE
 import { TimelineLite, Expo } from 'gsap'
-const OrbitControls = require('three-orbit-controls')(THREE)
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// const OrbitControls = require('three-orbit-controls')(THREE)
 const loadFont = require('load-bmfont')
 const createGeometry = require('three-bmfont-text')
 const MSDFShader = require('three-bmfont-text/shaders/msdf')

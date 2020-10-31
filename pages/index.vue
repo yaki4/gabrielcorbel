@@ -7,21 +7,21 @@
             .fold-content
               div(v-for='n in numberElem + 10', :key='n')
                   span.type.type--1 &nbsp;Interactive&nbsp;
-                  span.type.type--2 Developer / Developpeur &nbsp;
+                  span.type.type--2 Developer / Developpeur&nbsp;
                   span.type.type--1 Interactif&nbsp;
         .fold.fold-center(id='center-fold', ref='title')
           .fold-align
             .fold-content(id='center-content')
               div(v-for='n in numberElem', :key='n')
                 span.type.type--1 &nbsp;Interactive&nbsp;
-                span.type.type--2 Developer / Developpeur &nbsp;
+                span.type.type--2 Developer / Developpeur&nbsp;
                 span.type.type--1 Interactif&nbsp;
         .fold.fold-bottom
           .fold-align
             .fold-content
               div(v-for='n in numberElem', :key='n')
                 span.type.type--1 &nbsp;Interactive&nbsp;
-                span.type.type--2 Developer / Developpeur &nbsp;
+                span.type.type--2 Developer / Developpeur&nbsp;
                 span.type.type--1 Interactif&nbsp;
     //- .test(v-if='$store.state.logoClick')
       h2 coucou
@@ -31,7 +31,6 @@
 import { TimelineLite, Expo } from 'gsap'
 /* eslint-disable-next-line */
 // import App from '~/assets/js/App'
-import Kinetic from '~/assets/js/kinetic'
 export default {
   components: {
   },
@@ -45,6 +44,7 @@ export default {
     }
   },
   mounted () {
+    const Kinetic = require('~/assets/js/kinetic').default
     this.setScroll(true)
     const tl = new TimelineLite({
       onComplete: () => {
@@ -156,12 +156,6 @@ body::-webkit-scrollbar-thumb
 .fold-align
     width 100%
     height 100%
-
-.type
-    font-size 5.5vw
-    line-height 0.9
-    white-space nowrap
-    text-transform uppercase
 
 .type--1
     font-family ostrich-sans-black, sans-serif

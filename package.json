@@ -11,15 +11,11 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
-  "standard": {
-    "globals": [
-      "THREE"
-    ]
-  },
   "dependencies": {
     "@brunoimbrizi/controlkit": "^0.1.97",
     "bmfont-loader": "^0.2.0",
     "browser-detect": "^0.2.28",
+    "cannon": "^0.6.2",
     "cross-env": "^5.2.0",
     "domready": "^1.0.8",
     "gsap": "^2.1.3",
@@ -33,14 +29,17 @@
     "nuxt-font-loader-strategy": "^1.1.0",
     "three": "^0.116.1",
     "three-bmfont-text": "assets/library/three-bmfont-text",
-    "three-orbit-controls": "^82.1.0",
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^6.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-html": "^6.0.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-nuxt": ">=0.4.2",
     "extract-loader": "^5.1.0",
     "file-loader": "^1.1.11",

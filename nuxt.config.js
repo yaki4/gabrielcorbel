@@ -106,11 +106,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    // { src: '~/plugins/components', mode: 'client' },
-    {
-      src: '~/plugins/three',
-      mode: 'client'
-    }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -123,95 +118,20 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // ['nuxt-font-loader-strategy', {
-    //   ignoreLighthouse: true,
-    //   ignoredEffectiveTypes: ['2g', 'slow-2g'],
-    //   fonts: [
-    //     {
-    //       fileExtensions: ['eot', 'svg', 'ttf', 'woff'],
-    //       fontFamily: 'ostrich-sans-inline',
-    //       fontFaces: [
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans-inline-italic', 'ostrich-sans-inline-italic'],
-    //           src: 'assets/fonts/ostrich-sans/ostrich-sans-inline-italic',
-    //           fontWeight: 400,
-    //           fontStyle: 'italic'
-    //         },
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans-inline-regular', 'ostrich-sans-inline-regular'],
-    //           src: 'assets/fonts/ostrich-sans/ostrich-sans-inline-regular',
-    //           fontWeight: 400,
-    //           fontStyle: 'normal'
-    //         }
-    //       ]
-    //     },
-    //     {
-    //       fileExtensions: ['eot', 'svg', 'ttf', 'woff'],
-    //       fontFamily: 'ostrich-sans',
-    //       fontFaces: [
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans', 'ostrich-sansregular'],
-    //           src: 'assets/fonts/ostrich-sans/ostrich-sans-regular',
-    //           fontWeight: 400,
-    //           fontStyle: 'normal'
-    //         },
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans-black', 'ostrich-sans-black'],
-    //           src: 'assets/fonts/ostrich-sans/ostrich-sans-black',
-    //           fontWeight: 400,
-    //           fontStyle: 'normal'
-    //         },
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans-bold', 'ostrich-sans-bold'],
-    //           src: 'assets/fonts/ostrich-sans/ostrich-sans-bold',
-    //           fontWeight: 400,
-    //           fontStyle: 'normal'
-    //         },
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans-dashed', 'ostrich-sans-dashed'],
-    //           src: 'assets/fonts/ostrich-sans/ostrich-sans-dashed',
-    //           fontWeight: 400,
-    //           fontStyle: 'normal'
-    //         },
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans-light', 'ostrich-sans-light'],
-    //           src: 'assets/fonts/ostrich-sans/ostrich-sans-light',
-    //           fontWeight: 400,
-    //           fontStyle: 'normal'
-    //         },
-    //         {
-    //           preload: true,
-    //           localSrc: ['ostrich-sans-rounded', 'ostrich-sans-rounded'],
-    //           src: './assets/fonts/ostrich-sans/ostrich-sans-rounded',
-    //           fontWeight: 400,
-    //           fontStyle: 'normal'
-    //         }
-    //       ]
-    //     }
-    //   ]
-    // }]
   ],
   /*
   ** Build configuration
   */
   build: {
+    transpile: ['GLTFLoader.js', 'OrbitControls.js', 'TransformControls.js'],
     /*
      ** You can extend webpack config here
      */
-    // plugins: [
-    //   new webpack.ProvidePlugin({
-    //     THREE: 'three'
-    //   })
-    // ],
     extend (config, ctx) {
-      config.resolve.alias.vue = 'vue/dist/vue.common'
+
+      config.plugins.push(new webpack.ProvidePlugin({
+        THREE: 'three'
+      }))
 
       config.module.rules.push({
         test: /\.(glsl|vs|fs)$/,
@@ -229,13 +149,12 @@ export default {
             }
           }
         ]
-      }) 
-      /* old way
-        {
-          test: /\.fnt$/,
-          use: ["bmfont-loader"],
-        })
-      */
+      },{
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /(node_modules)/
+      })
       const stylusRules = config.module.rules.find(
         rule => rule.test.toString().includes('styl')
       )
