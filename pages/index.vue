@@ -6,25 +6,25 @@
           .fold-align
             .fold-content
               div(v-for='n in numberElem + 10', :key='n')
-                  span.type.type--1 &nbsp;Interactive&nbsp;
-                  span.type.type--2 Developer / Developpeur&nbsp;
-                  span.type.type--1 Interactif&nbsp;
+                span.type.type--1 &nbsp;{{type1}}&nbsp;
+                span.type.type--2 {{type2}}&nbsp;
+                span.type.type--1 {{type3}}&nbsp;
         .fold.fold-center(id='center-fold', ref='title')
           .fold-align
             .fold-content(id='center-content')
               div(v-for='n in numberElem', :key='n')
-                span.type.type--1 &nbsp;Interactive&nbsp;
-                span.type.type--2 Developer / Developpeur&nbsp;
-                span.type.type--1 Interactif&nbsp;
+                span.type.type--1 &nbsp;{{type1}}&nbsp;
+                span.type.type--2 {{type2}}&nbsp;
+                span.type.type--1 {{type3}}&nbsp;
         .fold.fold-bottom
           .fold-align
             .fold-content
               div(v-for='n in numberElem', :key='n')
-                span.type.type--1 &nbsp;Interactive&nbsp;
-                span.type.type--2 Developer / Developpeur&nbsp;
-                span.type.type--1 Interactif&nbsp;
-    //- .test(v-if='$store.state.logoClick')
-      h2 coucou
+                span.type.type--1 &nbsp;{{type1}}&nbsp;
+                span.type.type--2 {{type2}}&nbsp;
+                span.type.type--1 {{type3}}&nbsp;
+    //- .test
+      button(@click='testitem') test
 </template>
 
 <script>
@@ -32,7 +32,13 @@ import { TimelineLite, Expo } from 'gsap'
 /* eslint-disable-next-line */
 // import App from '~/assets/js/App'
 export default {
-  components: {
+  data () {
+    return {
+      type1: 'Interactive',
+      type2: 'Developer / Developpeur',
+      type3: 'Interactif',
+      valIndex: 0
+    }
   },
   computed: {
     numberElem () {
@@ -65,6 +71,12 @@ export default {
     }, 1000)
   },
   methods: {
+    testitem () {
+      this.type1 = this.type1 ? null : 'test'
+      // this.type1 = 'boubjour'
+      this.type2 = 'coucou'
+      this.type3 = 'tst'
+    },
     setScroll (first) {
       const centerContent = document.getElementById('center-content')
       const centerFold = document.getElementById('center-fold')
@@ -94,6 +106,12 @@ export default {
 </script>
 
 <style lang="stylus">
+.test
+  z-index 999
+  bottom 25vh
+  left 25vw
+  position absolute
+
 body::-webkit-scrollbar
   width 0em
 

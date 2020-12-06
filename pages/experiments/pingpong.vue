@@ -9,6 +9,7 @@ export default {
     // FAUT CHECKER SI CEST OK QUAND ON SE BALADE
     const PingPong = require('~/assets/js/pingpong').default
     this.ready = require('domready')
+    this.$store.dispatch('loading/setLoaded', true)
     this.ready(() => {
       // On va lancer la construction de la partie
       const pingpong = new PingPong()
