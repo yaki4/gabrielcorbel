@@ -27,7 +27,7 @@
     "mobile-detect": "^1.4.3",
     "nuxt": "^2.0.0",
     "nuxt-font-loader-strategy": "^1.1.0",
-    "three": "^0.116.1",
+    "three": "^0.137.0",
     "three-bmfont-text": "assets/library/three-bmfont-text",
     "url-loader": "^4.1.0"
   },
